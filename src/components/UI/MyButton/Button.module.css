@@ -1,13 +1,15 @@
 .button{
-    padding: 11px 16px;
-    border: none;
-    background-color: #19949E;
+    display: inline-block;
+    margin-top: 1rem;
+    background:var(--orange);
+    color:#fff;
+    padding:.8rem 3rem;
+    border:.2rem solid var(--orange);
     cursor: pointer;
-    color: rgb(255, 255, 255);
-    border-radius: 8px;
-    font-size: 18px;
+    font-size: 1.7rem;
     transition: background-color 0.3s ease;
 }
 .button:hover{
-    background-color: #1dbac9;
+    background:rgba(255, 165, 0,.2);
+      color:var(--orange);
 }
