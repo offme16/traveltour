@@ -3,6 +3,7 @@ import "./App.css";
 import { useDispatch } from "react-redux";
 import { Header } from "./components/Header/Header";
 import Main from "./pages/Main/Main";
+import { Footer } from "./components/Footer/Footer";
 function App() {
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/" />
         </Routes>
+        <Footer />
       </div>
       ;
     </BrowserRouter>
