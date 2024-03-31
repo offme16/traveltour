@@ -22,7 +22,7 @@ export const Header = () => {
             <NavLink href="/about">О компании</NavLink>
             </nav>
             <>
-            {acc ? <NavLink><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink><img className={style.img} src={log_out} alt="logout"/></NavLink>}
+            {acc ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink><img className={style.img} src={log_out} alt="logout"/></NavLink>}
             </>
         </header>
     )

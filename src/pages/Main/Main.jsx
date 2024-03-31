@@ -8,7 +8,6 @@ import contact from "../../assets/img/contact.svg";
 import { Input } from "../../components/UI/MyInput/Input";
 import { GalleryList } from "../../components/GalleryList/GalleryList";
 import Slider from "react-slick";
-
 const Main = () => {
     const country = useSelector(state => state.countriesData.countries);
     return (
@@ -73,7 +72,7 @@ const Main = () => {
                     <span>С</span>
                 </h1>
 
-                <div className={style.box_container}>
+                <div className={style.box_container} id="services">
                     <div className={style.box}>
                         <i className="fas fa-hotel"></i>
                         <h3>Доступные отели</h3>
@@ -163,9 +162,7 @@ const Main = () => {
         <textarea placeholder="Сообщение" name="" id="" cols="30" rows="10"></textarea>
         <Button>Отправить сообщение</Button>
         </form>
-
     </div>
-    
 </section>
 </div>
 )};

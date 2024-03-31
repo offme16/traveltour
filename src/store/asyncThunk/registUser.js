@@ -10,10 +10,7 @@ export const registUser = createAsyncThunk(
       const response = await axios.post("https://localhost:7045/user/signup", {
         username: authData.username,
         lastname: authData.lastname,
-        surname: authData.surname,
         email: authData.email,
-        phonenumber: authData.phonenumber,
-        address: authData.address,
         password: authData.password,
       });
 

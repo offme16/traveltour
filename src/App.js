@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { Header } from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import { Footer } from "./components/Footer/Footer";
+import Registration from "./pages/Registration/Registration";
+import Authorize from "./pages/Authorize/Authorize";
 function App() {
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -15,11 +17,12 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/authorize" element={<Authorize />} />
           <Route path="/" />
         </Routes>
         <Footer />
       </div>
-      ;
     </BrowserRouter>
   );
 }
