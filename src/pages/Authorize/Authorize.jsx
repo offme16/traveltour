@@ -74,7 +74,7 @@ const Auth = () => {
         </div>
         <Button>Войти</Button>
         <div className={style.form_section}>
-          <p className={style.signin}>Вы не зарегистрированны? <NavLink to={'/registration'}>Авторизоватся</NavLink></p>
+          <p className={style.signin}>Вы не зарегистрированны? <NavLink to={'/registration'} className={style.link}>Авторизоватся</NavLink></p>
           </div>
       </form> 
       

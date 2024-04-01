@@ -1,0 +1,51 @@
+.book {
+    padding: 40px;
+    z-index: 10000;
+}
+.book .row {
+    flex:1 1 40rem;
+}
+.book .row form{
+    flex:1 1 40rem;
+    padding:2rem;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+    border-radius: .5rem;
+}
+.row{
+     display: flex;
+     flex-wrap: wrap;
+     gap:1.5rem;
+     align-items: center;
+}
+      
+.row form{
+    flex:1 1 50rem;
+    padding:2rem;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+    border-radius: .5rem;
+} 
+.heading {
+    text-align: center;
+    padding: 2.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .heading span {
+    font-size: 3.5rem;
+    background: rgba(255, 165, 0, .2);
+    color: var(--orange);
+    border-radius: 0.5rem;
+    padding: 0.2rem 1rem;
+  }
+  
+  .heading span.space {
+    background: none;
+  }  
+  .total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 5px;
+  } 

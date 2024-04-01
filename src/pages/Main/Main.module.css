@@ -92,16 +92,4 @@
       padding:2rem;
       box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
       border-radius: .5rem;
-    }    
-textarea{
-      width:49%;
-      margin:1rem 0;
-      padding:1rem;
-      font-size: 1.7rem;
-      color:#333;
-      background:#f7f7f7;
-      text-transform: none;
-      height: 15rem;
-      resize: none;
-      width:100%;
-    }
+}    

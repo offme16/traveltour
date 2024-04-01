@@ -6,8 +6,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import vid1 from '../../assets/img/vid-1.mp4';
 import vid2 from '../../assets/img/vid-2.mp4';
 import vid3 from '../../assets/img/vid-3.mp4';
-import vid4 from '../../assets/img/vid-4.mp4';
-import vid5 from '../../assets/img/vid-5.mp4';
 const Carusel = () => {
   const settings = {
     dots: false,
@@ -39,16 +37,6 @@ const Carusel = () => {
       <div>
         <video width="100%" height="100%" autoPlay loop muted>
           <source src={vid3} type="video/mp4" />
-        </video>
-      </div>
-      <div>
-        <video width="100%" height="100%" autoPlay loop muted>
-          <source src={vid4} type="video/mp4" />
-        </video>
-      </div>
-      <div>
-        <video width="100%" height="100%" autoPlay loop muted>
-          <source src={vid5} type="video/mp4" />
         </video>
       </div>
     </Slider>

@@ -12,14 +12,10 @@ export const Header = () => {
                 <h1 className={style.logo}><span>T</span>ravel<span>T</span>our</h1>
             </NavLink>
             <nav className={style.navbar}>
-            <a href="#home">Главная</a>
-            <a href="#book">Забронировать</a>
+            <NavLink to={'/'} href="#home">Главная</NavLink>
             <a href="#packages">Туры</a>
-            <a href="#services">Сервис</a>
             <a href="#gallery">Галерея</a>
             <a href="#review">Отзывы</a>
-            <a href="#contact">Связаться с нами</a>
-            <NavLink href="/about">О компании</NavLink>
             </nav>
             <>
             {acc ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink><img className={style.img} src={log_out} alt="logout"/></NavLink>}

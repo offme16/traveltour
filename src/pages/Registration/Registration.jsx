@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../../components/UI/MyButton/Button";
 import style from "./Registration.module.css";
 import {useForm} from "react-hook-form"
@@ -52,7 +52,7 @@ const Registration = () => {
           </div>
       <Button >Зарегистрироваться</Button>
       <p className={style.signin}>
-      У вас уже есть учетная запись? <Link to={'/authorize'}>Авторизоваться</Link>
+      У вас уже есть учетная запись? <NavLink to={'/authorize'} className={style.link}>Авторизоваться</NavLink>
       </p>
      </form>}
     </div>

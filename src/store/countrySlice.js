@@ -11,28 +11,30 @@ const initialState = {
       name: "Мумбаи",
       descraption:
         "Исследуйте коммерческую столицу Индии, Мумбаи, с ее многочисленными представителями индийского кинематографа в городе.",
-      oldPrice: "120.000",
-      newPrice: "50.000",
+      oldPrice: "120000",
+      newPrice: "50000",
     },
     {
       id: "2",
       img: "https://www.erv.ru/upload/medialibrary/a72/ce2nwnx8gnfy1mswly6wjnron1tsatcm/%D0%92%D0%BE%D1%80%D0%BE%D1%82%D0%B0%20%D0%98%D0%BD%D0%B4%D0%B8%D0%B8%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%B0%D1%82%D0%B5%20%D0%B2%20%D0%9C%D1%83%D0%BC%D0%B1%D0%B0%D0%B8.jpg",
-      name: "Мумбаи",
+      name: "Марроко",
       descraption:
         "Исследуйте коммерческую столицу Индии, Мумбаи, с ее многочисленными представителями индийского кинематографа в городе.",
-      oldPrice: "120.000",
-      newPrice: "50.000",
+      oldPrice: "220000",
+      newPrice: "150000",
     },
     {
       id: "3",
       img: "https://www.erv.ru/upload/medialibrary/a72/ce2nwnx8gnfy1mswly6wjnron1tsatcm/%D0%92%D0%BE%D1%80%D0%BE%D1%82%D0%B0%20%D0%98%D0%BD%D0%B4%D0%B8%D0%B8%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%B0%D1%82%D0%B5%20%D0%B2%20%D0%9C%D1%83%D0%BC%D0%B1%D0%B0%D0%B8.jpg",
-      name: "Мумбаи",
+      name: "Дубай",
       descraption:
         "Исследуйте коммерческую столицу Индии, Мумбаи, с ее многочисленными представителями индийского кинематографа в городе.",
-      oldPrice: "150.000",
-      newPrice: "50.000",
+      oldPrice: "150000",
+      newPrice: "60000",
     },
   ],
+  count: 0,
+  total: 0,
 };
 export const countrySlice = createSlice({
   name: "country",
@@ -40,6 +42,12 @@ export const countrySlice = createSlice({
   reducers: {
     setField: (state, action) => {
       state.countries = action.payload;
+    },
+    setCount: (state, action) => {
+      state.count = action.payload;
+    },
+    setTotal: (state, action) => {
+      state.total = action.payload.price;
     },
   },
   //   extraReducers: (builder) => {

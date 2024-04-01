@@ -13,7 +13,7 @@ const Main = () => {
     return (
         <div className={style.home}>
             <Carusel />
-            <section className={style.packages}>
+            <section className={style.packages} id="packages">
                 <h1 className={style.heading}>
                     <span>А</span>
                     <span>К</span>
@@ -32,34 +32,6 @@ const Main = () => {
                     <span>Ы</span>
                 </h1>
                 <CountryList country={country}/>
-            </section>
-
-            <section className={style.book}>
-                <h1 className={style.heading}>
-                    <span>З</span>
-                    <span>А</span>
-                    <span>Б</span>
-                    <span>Р</span>
-                    <span>О</span>
-                    <span>Н</span>
-                    <span>И</span>
-                    <span>Р</span>
-                    <span>У</span>
-                    <span>Й</span>
-                </h1>
-
-                <div className={style.row}>
-                    <div className={style.image}>
-                        <img src={book} alt="" />
-                    </div>
-                    <form action="">
-                        <Input type="text" placeholder="Введите место"> Куда отправимся </Input>
-                        <Input type="number" placeholder="Введите количество пассажиров"> Количество пассажиров </Input>
-                        <Input type="date"> Прибытие </Input>
-                        <Input type="date"> Отъезд </Input>
-                        <Button>Забронировать сейчас</Button>
-                    </form>
-                </div>
             </section>
 
             <section className={style.services}>
@@ -129,40 +101,6 @@ const Main = () => {
             <span>В</span>
             <span>Ы</span>
             </h1>
-</section>
-<section className={style.contact} id="contact">
-    
-    <h1 className={style.heading}>
-        <span>С</span>
-        <span>В</span>
-        <span>Я</span>
-        <span>З</span>
-        <span>А</span>
-        <span>Т</span>
-        <span>Ь</span>
-        <span>С</span>
-        <span>Я</span>
-        <span className={style.space}></span>
-        <span>С</span>
-        <span className={style.space}></span>
-        <span>Н</span>
-        <span>А</span>
-        <span>М</span>
-        <span>И</span>
-    </h1>
-
-    <div className={style.row}>
-        <div className={style.image}>
-            <img src={contact} alt="img" />
-        </div>
-        <form action="">
-        <Input type="text" placeholder="Имя"></Input>
-        <Input type="email" placeholder="Email"></Input>
-        <Input type="text" placeholder="Номер телефона"></Input>
-        <textarea placeholder="Сообщение" name="" id="" cols="30" rows="10"></textarea>
-        <Button>Отправить сообщение</Button>
-        </form>
-    </div>
 </section>
 </div>
 )};
