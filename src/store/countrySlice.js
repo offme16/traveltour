@@ -33,8 +33,6 @@ const initialState = {
       newPrice: "60000",
     },
   ],
-  count: 0,
-  total: 0,
 };
 export const countrySlice = createSlice({
   name: "country",
@@ -42,12 +40,6 @@ export const countrySlice = createSlice({
   reducers: {
     setField: (state, action) => {
       state.countries = action.payload;
-    },
-    setCount: (state, action) => {
-      state.count = action.payload;
-    },
-    setTotal: (state, action) => {
-      state.total = action.payload.price;
     },
   },
   //   extraReducers: (builder) => {

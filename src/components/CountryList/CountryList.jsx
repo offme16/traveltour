@@ -22,7 +22,7 @@ export const CountryList = (props) => {
             <h3><i class="fas fa-map-marker-alt"></i> {e.name}</h3>
             <p>{e.descraption}</p>
             <div className={style.price}> {e.newPrice}₽ <span>{e.oldPrice}₽</span> </div>
-        <Button  onClick = { () => tooggle(e.id)} >Забронировать</Button>
+        <Button  onClick = { () => tooggle(e.id)}>Забронировать</Button>
         </div>
         <MyModal visible={visible} setVisible={setVisible} >
             <BookForm tour={tour}/>

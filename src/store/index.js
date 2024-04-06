@@ -3,6 +3,7 @@ import { registReducer } from "./registrationSlice";
 import { authReducer } from "./authenticationSlice";
 import { countriesReducer } from "./countrySlice";
 import { userReducer } from "./userSlice";
+import { bookReducer } from "./bookSlice";
 
 export function createRootStore(initialState) {
   const rootReducer = {
@@ -10,6 +11,7 @@ export function createRootStore(initialState) {
     authentication: authReducer,
     countriesData: countriesReducer,
     user: userReducer,
+    book: bookReducer,
   };
   return configureStore({
     reducer: rootReducer,
