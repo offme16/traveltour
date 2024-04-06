@@ -10,7 +10,7 @@ export const CountryList = (props) => {
 
     const tooggle = (e) => {
         setVisible(true);
-        const city = props.country.filter(item => item.id === e)
+        const city = props.country.find(item => item.id === e);
         setTour(city)
     }
 

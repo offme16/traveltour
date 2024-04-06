@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import style from "./GalleryList.module.css"
 import { Button } from "../UI/MyButton/Button"
 export const GalleryList = (props) => {
@@ -12,7 +12,6 @@ export const GalleryList = (props) => {
             <NavLink to={`/tour/${e.id}`} ><Button>Подробнее</Button></NavLink>
         </div>
     </div>
-)}
+)};
 </div>
-    )
-}
+)};

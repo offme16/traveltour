@@ -12,16 +12,16 @@ const BookForm = ({ tour }) => {
     const dispatch = useDispatch();
     const sum = useSelector(state => state.book.total);
     const bookData = useSelector(state => state.book);
-    
+
     const handleField = useCallback((value, fieldName) => {
         dispatch(bookActions.setField({ value, fieldName }));
-      }, [dispatch]);
+    }, [dispatch]);
 
-    if (!tour || !Array.isArray(tour) || tour.length === 0) {
+    if (!tour) {
         return null;
     }
-
-    const { name, newPrice } = tour[0];
+    
+    const { name, newPrice } = tour;
 
     const handlePrice = (value) => {
         const price = value * newPrice;
