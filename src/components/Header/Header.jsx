@@ -1,9 +1,9 @@
 import style from "./Header.module.css";
-import { Button } from "../UI/MyButton/Button";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import avatar from "../../assets/img/user.svg"
 import log_out from "../../assets/img/logout.svg"
+import { logoutUser } from "../../store/asyncThunk/logoutUser";
 export const Header = () => {
     const[acc, setAcc] = useState(true);
     return (
@@ -18,7 +18,7 @@ export const Header = () => {
             <a href="#review">Отзывы</a>
             </nav>
             <>
-            {acc ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink><img className={style.img} src={log_out} alt="logout"/></NavLink>}
+            {!acc ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink onClick={()=> logoutUser()}><img className={style.img} src={log_out} alt="logout"/></NavLink>}
             </>
         </header>
     )

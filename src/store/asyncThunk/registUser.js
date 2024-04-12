@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { userActions } from "../userSlice";
 import { USER_LOCALSTORAGE_KEY } from "../const/actionTypes";
+import api from "../http/api";
 
 export const registUser = createAsyncThunk(
   "regist/User",
   async (authData, thunkAPI) => {
     try {
-      const response = await axios.post("https://localhost:7045/user/signup", {
+      const response = await api.post("/signup", {
         username: authData.username,
         lastname: authData.lastname,
         email: authData.email,
@@ -19,9 +19,8 @@ export const registUser = createAsyncThunk(
       }
       localStorage.setItem(
         USER_LOCALSTORAGE_KEY,
-        JSON.stringify(response.data.userId)
+        JSON.stringify(response.data.accesToken)
       );
-      console.log(response.data.userId);
       thunkAPI.dispatch(userActions.setUser(response.data.userId));
       return response.data;
     } catch (error) {

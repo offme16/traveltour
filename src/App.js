@@ -7,11 +7,18 @@ import { Footer } from "./components/Footer/Footer";
 import Registration from "./pages/Registration/Registration";
 import Authorize from "./pages/Authorize/Authorize";
 import Tour from "./pages/Tour/Tour";
+import { AuthUser } from "./store/asyncThunk/auth";
+import { useEffect } from "react";
+import { USER_LOCALSTORAGE_KEY } from "./store/const/actionTypes";
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(userActions.initAuthData());
-  // }, [dispatch]);
+
+   const dispatch = useDispatch();
+  useEffect(() => {
+    if(localStorage.getItem(USER_LOCALSTORAGE_KEY)){
+      dispatch(AuthUser());
+    }
+  }, [dispatch]);
+  
   return (
     <BrowserRouter>
       <div className="App">
