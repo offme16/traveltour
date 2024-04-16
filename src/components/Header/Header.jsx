@@ -13,12 +13,12 @@ export const Header = () => {
             </NavLink>
             <nav className={style.navbar}>
             <NavLink to={'/'} href="#home">Главная</NavLink>
-            <a href="#packages">Туры</a>
+            <NavLink to={'/#packages'} href="#packages">Туры</NavLink>
             <a href="#gallery">Галерея</a>
             <a href="#review">Отзывы</a>
             </nav>
             <>
-            {!acc ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink onClick={()=> logoutUser()}><img className={style.img} src={log_out} alt="logout"/></NavLink>}
+            {acc ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink onClick={()=> logoutUser()}><img className={style.img} src={log_out} alt="logout"/></NavLink>}
             </>
         </header>
     )

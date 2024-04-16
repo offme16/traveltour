@@ -8,8 +8,10 @@ import contact from "../../assets/img/contact.svg";
 import { Input } from "../../components/UI/MyInput/Input";
 import { GalleryList } from "../../components/GalleryList/GalleryList";
 import Slider from "react-slick";
+import ScrollToTop from "../../assets/lib/scrollTop";
 const Main = () => {
     const country = useSelector(state => state.countriesData.countries);
+    ScrollToTop();
     return (
         <div className={style.home}>
             <Carusel />

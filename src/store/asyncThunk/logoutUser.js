@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { USER_LOCALSTORAGE_KEY } from "../const/actionTypes";
+import { USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH } from "../const/actionTypes";
 import api from "../http/api";
 
 export const logoutUser = createAsyncThunk(
@@ -11,6 +11,7 @@ export const logoutUser = createAsyncThunk(
         throw new Error();
       }
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+      localStorage.removeItem(USER_LOCALSTORAGE_REFRESH);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

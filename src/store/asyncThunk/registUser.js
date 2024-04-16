@@ -7,21 +7,15 @@ export const registUser = createAsyncThunk(
   "regist/User",
   async (authData, thunkAPI) => {
     try {
-      const response = await api.post("/signup", {
-        username: authData.username,
-        lastname: authData.lastname,
-        email: authData.email,
-        password: authData.password,
+      const response = await api.post("Auth/Register", {
+        UserName: authData.username,
+        //email: authData.email,
+        Password: authData.password,
       });
 
       if (!response.data) {
         throw new Error();
       }
-      localStorage.setItem(
-        USER_LOCALSTORAGE_KEY,
-        JSON.stringify(response.data.accesToken)
-      );
-      thunkAPI.dispatch(userActions.setUser(response.data.userId));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

@@ -9,12 +9,11 @@ import Authorize from "./pages/Authorize/Authorize";
 import Tour from "./pages/Tour/Tour";
 import { AuthUser } from "./store/asyncThunk/auth";
 import { useEffect } from "react";
-import { USER_LOCALSTORAGE_KEY } from "./store/const/actionTypes";
+import { USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH } from "./store/const/actionTypes";
 function App() {
-
    const dispatch = useDispatch();
   useEffect(() => {
-    if(localStorage.getItem(USER_LOCALSTORAGE_KEY)){
+    if(localStorage.getItem(USER_LOCALSTORAGE_REFRESH)){
       dispatch(AuthUser());
     }
   }, [dispatch]);

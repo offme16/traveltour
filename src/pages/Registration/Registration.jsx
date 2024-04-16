@@ -29,7 +29,7 @@ const Registration = () => {
       const onSubmit = useCallback( async () => {
         const result = await  dispatch(registUser(authData));
          if(result.meta.requestStatus === "fulfilled") {
-            navigate("/");
+            navigate("/authorize");
           } else {
             alert("!!!")
           }

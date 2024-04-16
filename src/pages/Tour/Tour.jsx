@@ -5,8 +5,10 @@ import { useParams } from "react-router-dom";
 import { Button } from "../../components/UI/MyButton/Button";
 import MyModal from "../../components/UI/MyModal/MyModal";
 import BookForm from "../../components/BookForm/BookForm";
+import ScrollToTop from "../../assets/lib/scrollTop";
 
 const Tour = () => {
+  ScrollToTop();
   const [visible, setVisible] = useState(false);
   const { id } = useParams();
   const country = useSelector((state) =>
