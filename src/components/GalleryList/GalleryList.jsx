@@ -12,6 +12,6 @@ export const GalleryList = (props) => {
             <NavLink to={`/tour/${e.id}`} ><Button>Подробнее</Button></NavLink>
         </div>
     </div>
-)};
+)}
 </div>
 )};

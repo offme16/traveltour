@@ -9,7 +9,8 @@ import Authorize from "./pages/Authorize/Authorize";
 import Tour from "./pages/Tour/Tour";
 import { AuthUser } from "./store/asyncThunk/auth";
 import { useEffect } from "react";
-import { USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH } from "./store/const/actionTypes";
+import { USER_LOCALSTORAGE_REFRESH } from "./store/const/actionTypes";
+import Search from "./pages/Search/Search";
 function App() {
    const dispatch = useDispatch();
   useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/authorize" element={<Authorize />} />
           <Route path="/tour/:id" element={<Tour />} />
-          <Route path="/" />
+          <Route path="/search" element={<Search />}/>
         </Routes>
         <Footer />
       </div>

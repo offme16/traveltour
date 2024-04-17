@@ -1,0 +1,14 @@
+.content{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+.seacrh__Form {
+    display: flex;
+    gap: 30px;
+    align-items: end;
+    padding: 10px;
+}

@@ -1,14 +1,10 @@
 import style from "./Main.module.css";
 import Carusel from "../../components/Slider/Carusel";
 import { useSelector } from "react-redux";
-import { Button } from "../../components/UI/MyButton/Button";
 import { CountryList } from "../../components/CountryList/CountryList";
-import book from "../../assets/img/book.svg";
-import contact from "../../assets/img/contact.svg";
-import { Input } from "../../components/UI/MyInput/Input";
 import { GalleryList } from "../../components/GalleryList/GalleryList";
-import Slider from "react-slick";
 import ScrollToTop from "../../assets/lib/scrollTop";
+import StringSplitter from "../../components/StringSpliter/StringSpliter";
 const Main = () => {
     const country = useSelector(state => state.countriesData.countries);
     ScrollToTop();
@@ -17,33 +13,14 @@ const Main = () => {
             <Carusel />
             <section className={style.packages} id="packages">
                 <h1 className={style.heading}>
-                    <span>А</span>
-                    <span>К</span>
-                    <span>Т</span>
-                    <span>У</span>
-                    <span>А</span>
-                    <span>Л</span>
-                    <span>Ь</span>
-                    <span>Н</span>
-                    <span>Ы</span>
-                    <span>Е</span>
-                    <span className={style.space}></span>
-                    <span>Т</span>
-                    <span>У</span>
-                    <span>Р</span>
-                    <span>Ы</span>
+                <StringSplitter text="АКТУАЛЬНЫЕ ТУРЫ" />
                 </h1>
                 <CountryList country={country}/>
             </section>
 
             <section className={style.services}>
                 <h1 className={style.heading}>
-                    <span>С</span>
-                    <span>Е</span>
-                    <span>Р</span>
-                    <span>В</span>
-                    <span>И</span>
-                    <span>С</span>
+                <StringSplitter text="СЕРВИС" />
                 </h1>
 
                 <div className={style.box_container} id="services">
@@ -81,27 +58,14 @@ const Main = () => {
             </section>
 
             <section className={style.gallery} id="gallery">
-
             <h1 className={style.heading}>
-                <span>Г</span>
-                <span>А</span>
-                <span>Л</span>
-                <span>Е</span>
-                <span>Р</span>
-                <span>Е</span>
-                <span>Я</span>
+            <StringSplitter text="ГАЛЕРЕЯ" />
             </h1>
             <GalleryList country={country}/>
             </section>
-
             <section class="review" id="review">
             <h1 className={style.heading}>
-            <span>О</span>
-            <span>Т</span>
-            <span>З</span>
-            <span>Ы</span>
-            <span>В</span>
-            <span>Ы</span>
+            <StringSplitter text="ОТЗЫВЫ" />
             </h1>
 </section>
 </div>

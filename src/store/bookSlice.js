@@ -4,6 +4,8 @@ import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
   error: "",
+  tourID: "",
+  country: "",
   name: "",
   dateOfDispatch: "",
   dateOfArrival: "",
@@ -23,6 +25,9 @@ export const bookSlice = createSlice({
     setTotal: (state, action) => {
         state.total = action.payload.price;
     },
+    setTourID: (state, action) => {
+      state.tourID = action.payload;
+  }
   },
   //   extraReducers: (builder) => {
   //     builder

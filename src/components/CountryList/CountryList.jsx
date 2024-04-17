@@ -5,9 +5,8 @@ import BookForm from "../BookForm/BookForm";
 import { useState } from "react";
 export const CountryList = (props) => {
     const [visible, setVisible] = useState(false);
-
     const [tour, setTour] = useState();
-
+    const arr = props.country.filter(e => e.status === 'actual');
     const tooggle = (e) => {
         setVisible(true);
         const city = props.country.find(item => item.id === e);
@@ -16,7 +15,7 @@ export const CountryList = (props) => {
 
     return (
     <div className={style.box_container}>
-            {props.country.map((e) => <div className={style.box} key={e.id}>
+            {arr.map((e) => <div className={style.box} key={e.id}>
                 <img src={e.img} alt="img" />
         <div className={style.content}>
             <h3><i class="fas fa-map-marker-alt"></i> {e.name}</h3>

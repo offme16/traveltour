@@ -11,10 +11,10 @@ const Tour = () => {
   ScrollToTop();
   const [visible, setVisible] = useState(false);
   const { id } = useParams();
+
   const country = useSelector((state) =>
     state.countriesData.countries.find((country) => country.id === id)
   );
-
 
   if (!country) {
     return <div>Тур не найден</div>;

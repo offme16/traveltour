@@ -6,6 +6,7 @@ import React, { useCallback } from "react";
 import { bookActions } from "../../store/bookSlice";
 import { useNavigate } from "react-router-dom";
 import { postBookForm } from "../../store/asyncThunk/postBook";
+import StringSplitter from "../StringSpliter/StringSpliter";
 
 const BookForm = ({ tour }) => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const BookForm = ({ tour }) => {
         return null;
     }
     
-    const { name, newPrice } = tour;
+    const { name, newPrice, id } = tour;
 
     const handlePrice = (value) => {
         const price = value * newPrice;
@@ -31,6 +32,7 @@ const BookForm = ({ tour }) => {
 
     const postBook = async () => {
       try {
+          dispatch(bookActions.setTourID(id))
           const result = await dispatch(postBookForm(bookData));
           if (result.meta.requestStatus === "rejected") {
               alert("Произошла ошибка: " + result.payload);
@@ -46,18 +48,8 @@ const BookForm = ({ tour }) => {
     return (
         <section className={style.book}>
             <h1 className={style.heading}>
-                <span>З</span>
-                <span>А</span> 
-                <span>Б</span>
-                <span>Р</span>
-                <span>О</span>
-                <span>Н</span>
-                <span>И</span>
-                <span>Р</span>
-                <span>У</span>
-                <span>Й</span>
+                <StringSplitter text={'ЗАБРОНИРУЙ'} />
             </h1>
-
             <div className={style.row}>
                 <form onSubmit={(e) => e.preventDefault()}>
                     <Input type="text" value={name} readOnly onChange = {handleField(name, "name")}> Куда отправимся </Input>

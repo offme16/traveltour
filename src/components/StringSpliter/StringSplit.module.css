@@ -1,0 +1,17 @@
+.split {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.split span {
+    font-size: 3.5rem;
+    background: rgba(255, 165, 0, .2);
+    color: var(--orange);
+    border-radius: 0.5rem;
+    padding: 0.2rem 1rem;
+  }
+
+.split span.space {
+    background: none;
+  }

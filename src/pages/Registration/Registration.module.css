@@ -21,6 +21,8 @@
 }
 em{
   color: red;
+  font-size: 12px;
+  font-weight: 700;
 }
 .title {
   font-size: 28px;
