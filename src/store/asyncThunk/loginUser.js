@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
   "login/User",
   async (authData, thunkAPI) => {
     try {
-      const response = await api.post("Auth/Login", {
+      const response = await api.post("api/Auth/Login", {
         userName: authData.username,
         password: authData.password,
       });

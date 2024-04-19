@@ -26,18 +26,17 @@ const BookForm = ({ tour }) => {
 
     const handlePrice = (value) => {
         const price = value * newPrice;
-        dispatch(bookActions.setCount({ value }));
+        dispatch(bookActions.setCount({ value: parseInt(value, 10) }));
         dispatch(bookActions.setTotal({ price }));
     };
 
     const postBook = async () => {
       try {
-          dispatch(bookActions.setTourID(id))
           const result = await dispatch(postBookForm(bookData));
           if (result.meta.requestStatus === "rejected") {
               alert("Произошла ошибка: " + result.payload);
           } else {
-              navigate("/");
+             
           }   
       } catch (error) {
           console.error("Произошла ошибка:", error);
@@ -52,10 +51,8 @@ const BookForm = ({ tour }) => {
             </h1>
             <div className={style.row}>
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <Input type="text" value={name} readOnly onChange = {handleField(name, "name")}> Куда отправимся </Input>
+                <Input type="text" value={name} readOnly onChange={(e) => handleField(e.target.value, "name")}> Вы выбрали </Input>
                     <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handlePrice(e.target.value)}> Количество пассажиров </Input>
-                    <Input type="date" onChange = {(e) => handleField(e.target.value, "dateOfDispatch")}>Прибытие</Input>
-                    <Input type="date" onChange = {(e) => handleField(e.target.value, "dateOfArrival")}>Отъезд</Input>
                     <div className={style.total}>
                         <strong>Сумма:</strong>
                         <strong>{sum}₽</strong>

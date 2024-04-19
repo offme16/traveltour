@@ -3,15 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import style from './Search.module.css';
 import { Button } from '../../components/UI/MyButton/Button';
 import { Input } from '../../components/UI/MyInput/Input';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { bookActions } from '../../store/bookSlice';
 import { searchTour } from '../../store/asyncThunk/searchTour';
+import { getTour } from '../../store/asyncThunk/getTour';
 
 const Search = () => {
     const country = useSelector(state => state.countriesData.countries);
     const dispatch = useDispatch();
     const bookData = useSelector(state => state.book);
-    
+
+    useEffect(()=> {
+        dispatch(getTour())
+    },[dispatch]);
+
     const handleField = useCallback((value, fieldName) => {
         dispatch(bookActions.setField({ value, fieldName }));
     }, [dispatch]);
@@ -39,7 +44,6 @@ const Search = () => {
         <Input type="date" onChange={(e) => handleField(e.target.value, "dateOfArrival")}>Отъезд</Input>
         <Button className={style.btn_sf} onClick={onSubmit}>Поиск</Button>
         </form>
-
         <GalleryList country={country}/>
     </div>
 )};

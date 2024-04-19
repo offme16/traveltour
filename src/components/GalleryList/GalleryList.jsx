@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom"
 import style from "./GalleryList.module.css"
 import { Button } from "../UI/MyButton/Button"
+import { useDispatch } from "react-redux";
+import { bookActions } from "../../store/bookSlice";
 export const GalleryList = (props) => {
+    const dispatch = useDispatch();
     return (
         <div className={style.box_container}>
             {props.country.map((e) => 
@@ -9,7 +12,7 @@ export const GalleryList = (props) => {
             <img src={e.img} alt="img" />
         <div className={style.content}>
             <h3>{e.name}</h3>
-            <NavLink to={`/tour/${e.id}`}><Button>Подробнее</Button></NavLink>
+            <NavLink to={`/tour/${e.id}`}><Button onClick={() => dispatch(bookActions.setTourID(e.id))}>Подробнее</Button></NavLink>
         </div>
     </div>
 )}

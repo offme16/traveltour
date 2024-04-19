@@ -1,19 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_URL } from "../http/api";
 
 export const postBookForm = createAsyncThunk(
   "post_bookForm",
   async (bookData, thunkAPI) => {
     try {
-      const response = await axios.post("https://localhost:7045/user/book", {
-        tourID: bookData.tourID
+      console.log("Sending request with data:", bookData);
+      
+      const response = await axios.patch(`${API_URL}BookTour`, {
+        tourId: Number(bookData.tourID),
+        persons: Number(bookData.count.value)
       });
 
+      console.log("Response received:", response.data);
+      
       if (!response.data) {
         throw new Error();
       }
+      alert(response.data)
       return response.data;
     } catch (error) {
+      console.error("Request failed with error:", error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

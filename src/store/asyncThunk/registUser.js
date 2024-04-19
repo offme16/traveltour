@@ -7,7 +7,7 @@ export const registUser = createAsyncThunk(
   "regist/User",
   async (authData, thunkAPI) => {
     try {
-      const response = await api.post("Auth/Register", {
+      const response = await api.post("api/Auth/Register", {
         UserName: authData.username,
         //email: authData.email,
         Password: authData.password,

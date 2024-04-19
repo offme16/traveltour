@@ -7,13 +7,27 @@ import ScrollToTop from "../../assets/lib/scrollTop";
 import StringSplitter from "../../components/StringSpliter/StringSpliter";
 import { useEffect } from "react";
 import { getTour } from "../../store/asyncThunk/getTour";
+import { AuthUser } from "../../store/asyncThunk/auth";
+import { useNavigate } from "react-router-dom";
+import { USER_LOCALSTORAGE_REFRESH } from "../../store/const/actionTypes";
+
 const Main = () => {
-    const dispath = useDispatch();
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+   useEffect(() => {
+     if(localStorage.getItem(USER_LOCALSTORAGE_REFRESH)){
+       dispatch(AuthUser())
+       dispatch(getTour())
+     } else {
+       navigate('/authorize')
+     }
+   }, [dispatch]);
+
     const country = useSelector(state => state.countriesData.countries);
-    useEffect (() => {
-        dispath(getTour())
-    }, [dispath])
     ScrollToTop();
+
     return (
         <div className={style.home}>
             <Carusel />

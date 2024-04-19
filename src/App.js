@@ -1,23 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { useDispatch } from "react-redux";
 import { Header } from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import { Footer } from "./components/Footer/Footer";
 import Registration from "./pages/Registration/Registration";
 import Authorize from "./pages/Authorize/Authorize";
 import Tour from "./pages/Tour/Tour";
-import { AuthUser } from "./store/asyncThunk/auth";
-import { useEffect } from "react";
-import { USER_LOCALSTORAGE_REFRESH } from "./store/const/actionTypes";
 import Search from "./pages/Search/Search";
 function App() {
-   const dispatch = useDispatch();
-  useEffect(() => {
-    if(localStorage.getItem(USER_LOCALSTORAGE_REFRESH)){
-      dispatch(AuthUser());
-    }
-  }, [dispatch]);
+
   
   return (
     <BrowserRouter>

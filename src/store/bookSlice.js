@@ -1,5 +1,5 @@
 import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
-//import { registUser } from "./asyncThunk/registUser";
+import { postBookForm } from "./asyncThunk/postBook";
 
 const initialState = {
   isLoading: false,
@@ -11,6 +11,7 @@ const initialState = {
   dateOfArrival: "",
   count: 0,
   total: 0,
+  result: '',
 };
 export const bookSlice = createSlice({
   name: "bookForm",
@@ -29,20 +30,21 @@ export const bookSlice = createSlice({
       state.tourID = action.payload;
   }
   },
-  //   extraReducers: (builder) => {
-  //     builder
-  //       .addCase(registUser.pending, (state, action) => {
-  //         state.error = undefined;
-  //         state.isLoading = true;
-  //       })
-  //       .addCase(registUser.fulfilled, (state, action) => {
-  //         state.isLoading = false;
-  //       })
-  //       .addCase(registUser.rejected, (state, action) => {
-  //         state.isLoading = false;
-  //         state.error = action.payload;
-  //       });
-  //   },
+    extraReducers: (builder) => {
+      builder
+        .addCase(postBookForm.pending, (state, action) => {
+          state.error = undefined;
+          state.isLoading = true;
+        })
+        .addCase(postBookForm.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.result = action.payload;
+        })
+        .addCase(postBookForm.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        });
+    },
 });
 
 export const { actions: bookActions } = bookSlice;

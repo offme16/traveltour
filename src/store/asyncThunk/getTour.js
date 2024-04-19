@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_URL } from "../http/api";
 
 export const getTour = createAsyncThunk(
   "get_tour",
   async (thunkAPI) => {
     try {
-      const response = await axios.get("https://localhost:7045/tour");
-
+      const response = await axios.get(`${API_URL}GetAllTours`);
       if (!response.data) {
         throw new Error();
       }

@@ -7,6 +7,7 @@ import MyModal from "../../components/UI/MyModal/MyModal";
 import BookForm from "../../components/BookForm/BookForm";
 import ScrollToTop from "../../assets/lib/scrollTop";
 import { getHostel } from "../../store/asyncThunk/getHostel";
+import { getTour } from "../../store/asyncThunk/getTour";
 
 const Tour = () => {
   ScrollToTop();
@@ -14,15 +15,13 @@ const Tour = () => {
   const [visible, setVisible] = useState(false);
   const { id } = useParams();
 
-  useEffect(() => {
-     dispatch(getHostel(id))
-  },[dispatch,id]);
-
   const country = useSelector((state) =>
-    state.countriesData.countries.find((country) => country.id === id)
+    state.countriesData.countries.find((country) => country.id === Number(id))
   );
 
-
+  useEffect(() => {
+    dispatch(getHostel(country.hotelId));
+ },[dispatch]);
 
   if (!country) {
     return <div>Тур не найден</div>;
@@ -34,8 +33,8 @@ const Tour = () => {
       <img src={country.img} alt="Tour" className={style.tourPhoto} />
       <div className={style.tourInfo}>
         <div className={style.tourPrice}>{country.name}</div>
-        <div className={style.tourPrice}>Цена: {country.newPrice}₽</div>
-        <div className={style.tourDescription}>{country.descraption}</div>
+        <div className={style.tourPrice}>Цена: {country.price}₽</div>
+        <div className={style.tourDescription}>{country.description}</div>
         <Button  onClick = {() => setVisible(true)}>Забронировать</Button>
       </div>
       

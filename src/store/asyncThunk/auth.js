@@ -8,7 +8,7 @@ export const AuthUser = createAsyncThunk(
   "auth/User",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.post(`${API_URL}Auth/RefreshToken`, {
+      const response = await axios.post(`${API_URL}api/Auth/RefreshToken`, {
         jwtToken: JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY)),
         refreshToken: JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_REFRESH))
       });
