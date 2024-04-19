@@ -7,6 +7,7 @@ export const CountryList = (props) => {
     const [visible, setVisible] = useState(false);
     const [tour, setTour] = useState();
     const arr = props.country.filter(e => e.status === 'actual');
+    
     const tooggle = (e) => {
         setVisible(true);
         const city = props.country.find(item => item.id === e);

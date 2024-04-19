@@ -1,5 +1,5 @@
-import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
-//import { registUser } from "./asyncThunk/registUser";
+import { createSlice } from "@reduxjs/toolkit";
+import { getTour } from "./asyncThunk/getTour";
 
 const initialState = {
   isLoading: false,
@@ -107,20 +107,21 @@ export const countrySlice = createSlice({
       state.countries = action.payload;
     },
   },
-  //   extraReducers: (builder) => {
-  //     builder
-  //       .addCase(registUser.pending, (state, action) => {
-  //         state.error = undefined;
-  //         state.isLoading = true;
-  //       })
-  //       .addCase(registUser.fulfilled, (state, action) => {
-  //         state.isLoading = false;
-  //       })
-  //       .addCase(registUser.rejected, (state, action) => {
-  //         state.isLoading = false;
-  //         state.error = action.payload;
-  //       });
-  //   },
+    extraReducers: (builder) => {
+      builder
+        .addCase(getTour.pending, (state, action) => {
+          state.error = undefined;
+          state.isLoading = true;
+        })
+        .addCase(getTour.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.countries = action.payload;
+        })
+        .addCase(getTour.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        });
+    },
 });
 
 export const { actions: countriesActions } = countrySlice;

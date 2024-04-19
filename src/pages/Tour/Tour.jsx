@@ -1,20 +1,28 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Tour.module.css";
 import { useParams } from "react-router-dom";
 import { Button } from "../../components/UI/MyButton/Button";
 import MyModal from "../../components/UI/MyModal/MyModal";
 import BookForm from "../../components/BookForm/BookForm";
 import ScrollToTop from "../../assets/lib/scrollTop";
+import { getHostel } from "../../store/asyncThunk/getHostel";
 
 const Tour = () => {
   ScrollToTop();
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const { id } = useParams();
+
+  useEffect(() => {
+     dispatch(getHostel(id))
+  },[dispatch,id]);
 
   const country = useSelector((state) =>
     state.countriesData.countries.find((country) => country.id === id)
   );
+
+
 
   if (!country) {
     return <div>Тур не найден</div>;

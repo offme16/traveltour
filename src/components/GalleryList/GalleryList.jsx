@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import style from "./GalleryList.module.css"
 import { Button } from "../UI/MyButton/Button"
 export const GalleryList = (props) => {
@@ -9,7 +9,7 @@ export const GalleryList = (props) => {
             <img src={e.img} alt="img" />
         <div className={style.content}>
             <h3>{e.name}</h3>
-            <NavLink to={`/tour/${e.id}`} ><Button>Подробнее</Button></NavLink>
+            <NavLink to={`/tour/${e.id}`}><Button>Подробнее</Button></NavLink>
         </div>
     </div>
 )}

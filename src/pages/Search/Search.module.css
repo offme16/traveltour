@@ -9,6 +9,10 @@
 .seacrh__Form {
     display: flex;
     gap: 30px;
-    align-items: end;
+    align-items: flex-end;
     padding: 10px;
+}
+.error_message {
+    font-size: 16px;
+    color: red;
 }

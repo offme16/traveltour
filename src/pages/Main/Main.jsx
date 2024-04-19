@@ -1,12 +1,18 @@
 import style from "./Main.module.css";
 import Carusel from "../../components/Slider/Carusel";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CountryList } from "../../components/CountryList/CountryList";
 import { GalleryList } from "../../components/GalleryList/GalleryList";
 import ScrollToTop from "../../assets/lib/scrollTop";
 import StringSplitter from "../../components/StringSpliter/StringSpliter";
+import { useEffect } from "react";
+import { getTour } from "../../store/asyncThunk/getTour";
 const Main = () => {
+    const dispath = useDispatch();
     const country = useSelector(state => state.countriesData.countries);
+    useEffect (() => {
+        dispath(getTour())
+    }, [dispath])
     ScrollToTop();
     return (
         <div className={style.home}>

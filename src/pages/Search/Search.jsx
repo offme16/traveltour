@@ -16,7 +16,7 @@ const Search = () => {
         dispatch(bookActions.setField({ value, fieldName }));
     }, [dispatch]);
 
-    const search = async () => {
+    const onSubmit = async () => {
         try {
             const result = await dispatch(searchTour(bookData));
             if (result.meta.requestStatus === "rejected") {
@@ -32,13 +32,14 @@ const Search = () => {
 
     return (
     <div className={style.content}>
-        <form className={style.seacrh__Form} onSubmit={(e) => e.preventDefault()}>
-        <Input type="string" placeholder="Введите страну" onChange = {(e) => handleField(e.target.value, "country")}>Страна</Input>
+        <form className={style.seacrh__Form} onSubmit={(e)=> e.preventDefault()}>
+        <Input type="string" placeholder="Введите страну" onChange={(e) => handleField(e.target.value, "country")}>Страна</Input>
         <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handleField(e.target.value, "count")}>Количество пассажиров</Input>
-        <Input type="date" onChange = {(e) => handleField(e.target.value, "dateOfDispatch")}>Прибытие</Input>
-        <Input type="date" onChange = {(e) => handleField(e.target.value, "dateOfArrival")}>Отъезд</Input>
-        <Button className={style.btn_sf} onClick={search}>Поиск</Button>
+        <Input type="date" onChange={(e) => handleField(e.target.value, "dateOfDispatch")}>Прибытие</Input>
+        <Input type="date" onChange={(e) => handleField(e.target.value, "dateOfArrival")}>Отъезд</Input>
+        <Button className={style.btn_sf} onClick={onSubmit}>Поиск</Button>
         </form>
+
         <GalleryList country={country}/>
     </div>
 )};

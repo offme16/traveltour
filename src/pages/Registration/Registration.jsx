@@ -3,15 +3,18 @@ import { Button } from "../../components/UI/MyButton/Button";
 import style from "./Registration.module.css";
 import {useForm} from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { registUser } from "../../store/asyncThunk/registUser";
 import { Loader } from "../../components/Loader/Loader";
 import { registActions } from "../../store/registrationSlice";
+import MyModal from "../../components/UI/MyModal/MyModal";
 
 const Registration = () => {
+  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const authData = useSelector(state => state.registration)
+  const authData = useSelector(state => state.registration);
+
   const handleField = useCallback((value, fieldName) => {
     dispatch(registActions.setField({ value, fieldName }));
   }, [dispatch])
@@ -31,7 +34,7 @@ const Registration = () => {
          if(result.meta.requestStatus === "fulfilled") {
             navigate("/authorize");
           } else {
-            alert("!!!")
+            setVisible(true);
           }
       },[dispatch, navigate, authData]);
       
@@ -55,6 +58,9 @@ const Registration = () => {
       У вас уже есть учетная запись? <NavLink to={'/authorize'} className={style.link}>Авторизоваться</NavLink>
       </p>
      </form>}
+     <MyModal visible={visible} setVisible={setVisible}>
+          <div>{authData.errors}</div>
+     </MyModal>
     </div>
   );
 };
