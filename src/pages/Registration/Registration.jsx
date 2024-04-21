@@ -7,10 +7,8 @@ import { useCallback, useState } from "react";
 import { registUser } from "../../store/asyncThunk/registUser";
 import { Loader } from "../../components/Loader/Loader";
 import { registActions } from "../../store/registrationSlice";
-import MyModal from "../../components/UI/MyModal/MyModal";
 
 const Registration = () => {
-  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const authData = useSelector(state => state.registration);
@@ -33,8 +31,6 @@ const Registration = () => {
         const result = await  dispatch(registUser(authData));
          if(result.meta.requestStatus === "fulfilled") {
             navigate("/authorize");
-          } else {
-            setVisible(true);
           }
       },[dispatch, navigate, authData]);
       
@@ -58,9 +54,9 @@ const Registration = () => {
       У вас уже есть учетная запись? <NavLink to={'/authorize'} className={style.link}>Авторизоваться</NavLink>
       </p>
      </form>}
-     <MyModal visible={visible} setVisible={setVisible}>
-          <div>{authData.errors}</div>
-     </MyModal>
+     {authData.errors ? <div class="alert alert-danger" role="alert">
+  A simple danger alert—check it out!
+</div> : ''}
     </div>
   );
 };

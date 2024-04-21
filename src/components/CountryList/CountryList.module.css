@@ -1,15 +1,36 @@
 .box_container{
-    display: flex;
     flex-wrap: wrap;
     gap:2rem;
+    display: flex;
   }
-  
+  .content h3{
+    text-align: center;
+  }
+.box_container__error{
+  font-size: 24px;
+}
 .box_container .box{
-    flex:1 1 30rem;
-    border-radius: .5rem;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+    border-radius: 1rem;
+    overflow: hidden;
   }
+  .box{
+    max-width: 500px;
+    
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Positions the button at the bottom */
+    height: 100%; /* Ensures the content occupies all available space */
+    align-items: center;
+}
+
+.button_container {
+    margin-top: auto;
+}
   
 .box_container .box img{
     height: 25rem;
@@ -46,13 +67,17 @@
     color:#333;
     padding-top: 1rem;
   }
-  
+  .price {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 .box_container .box .content .price span{
     color:#666;
     font-size: 1.5rem;
     text-decoration: line-through;
   }
-  
   .services .box_container{
     display: flex;
     flex-wrap: wrap;

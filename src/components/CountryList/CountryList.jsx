@@ -20,19 +20,24 @@ export const CountryList = (props) => {
     }
 
     return (
-    <div className={style.box_container}>
-            {arr.map((e) => <div className={style.box} key={e.id}>
-                <img src={e.img} alt="img" />
-        <div className={style.content}>
-            <h3><i class="fas fa-map-marker-alt"></i> {e.name}</h3>
-            <p>{e.description}</p>
-            <div className={style.price}>{e.price - ((e.discount*e.price)/100)} ₽ <span>{e.price}₽</span> </div>
-        <Button  onClick = { () => tooggle(e.id)}>Забронировать</Button>
-        </div>
-        <MyModal visible={visible} setVisible={setVisible} >
-            <BookForm tour={tour}/>
-        </MyModal>
-    </div>
-)} 
-    </div>
-)};
+        <>
+            <div className={style.box_container}>
+                {arr.length ? arr.map((e) => (
+                    <div className={style.box} key={e.id}>
+                        <img src={e.images} alt="img" />
+                        <div className={style.content}>
+                            <h3><i className="fas fa-map-marker-alt"></i> {e.name}</h3>
+                            <p>{e.description}</p>
+                            <div className={style.button_container}>
+                            <div className={style.price}>{e.price - ((e.discount*e.price)/100)} ₽<span>{e.price}₽</span> </div>
+                            <Button  onClick = { () => tooggle(e.id)}>Забронировать</Button></div>
+                        </div>
+                    </div>
+                )) : <div className={style.box_container__error}>Ничего не найдено:(</div>}
+            </div>
+            <MyModal visible={visible} setVisible={setVisible} >
+                <BookForm tour={tour} setVisible={setVisible}/>
+            </MyModal>
+        </>
+    );
+};

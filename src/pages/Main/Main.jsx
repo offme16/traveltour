@@ -12,17 +12,15 @@ import { useNavigate } from "react-router-dom";
 import { USER_LOCALSTORAGE_REFRESH } from "../../store/const/actionTypes";
 
 const Main = () => {
-
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
+    
    useEffect(() => {
+    dispatch(getTour());
+
      if(localStorage.getItem(USER_LOCALSTORAGE_REFRESH)){
        dispatch(AuthUser())
-       dispatch(getTour())
-     } else {
-       navigate('/authorize')
      }
+
    }, [dispatch]);
 
     const country = useSelector(state => state.countriesData.countries);
@@ -83,11 +81,11 @@ const Main = () => {
             </h1>
             <GalleryList country={country}/>
             </section>
-            <section class="review" id="review">
+            {/* <section class="review" id="review">
             <h1 className={style.heading}>
             <StringSplitter text="ОТЗЫВЫ" />
             </h1>
-</section>
+            </section> */}
 </div>
 )};
 

@@ -9,11 +9,9 @@ import { postBookForm } from "../../store/asyncThunk/postBook";
 import StringSplitter from "../StringSpliter/StringSpliter";
 
 const BookForm = ({ tour }) => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const sum = useSelector(state => state.book.total);
     const bookData = useSelector(state => state.book);
-
     const handleField = useCallback((value, fieldName) => {
         dispatch(bookActions.setField({ value, fieldName }));
     }, [dispatch]);
@@ -22,12 +20,16 @@ const BookForm = ({ tour }) => {
         return null;
     }
     
-    const { name, newPrice, id } = tour;
+    const { name, price, id, discount } = tour;
+
+    function currentSumm(value) {
+        return discount > 0 ?  value * price - ((discount*price)/100) : value * price;
+    }
 
     const handlePrice = (value) => {
-        const price = value * newPrice;
+        let sumPrice = currentSumm(value);
         dispatch(bookActions.setCount({ value: parseInt(value, 10) }));
-        dispatch(bookActions.setTotal({ price }));
+        dispatch(bookActions.setTotal({ sumPrice }));
     };
 
     const postBook = async () => {
@@ -36,11 +38,11 @@ const BookForm = ({ tour }) => {
           if (result.meta.requestStatus === "rejected") {
               alert("Произошла ошибка: " + result.payload);
           } else {
-             
+
           }   
       } catch (error) {
           console.error("Произошла ошибка:", error);
-          alert("Произошла ошибка при входе!");
+          alert("Произошла ошибка!");
       }
   };
 
@@ -52,7 +54,7 @@ const BookForm = ({ tour }) => {
             <div className={style.row}>
                 <form onSubmit={(e) => e.preventDefault()}>
                 <Input type="text" value={name} readOnly onChange={(e) => handleField(e.target.value, "name")}> Вы выбрали </Input>
-                    <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handlePrice(e.target.value)}> Количество пассажиров </Input>
+                <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handlePrice(e.target.value)} > Количество пассажиров </Input>
                     <div className={style.total}>
                         <strong>Сумма:</strong>
                         <strong>{sum}₽</strong>

@@ -9,7 +9,7 @@ const initialState = {
   name: "",
   dateOfDispatch: "",
   dateOfArrival: "",
-  count: 0,
+  count: 1,
   total: 0,
   result: '',
 };
@@ -24,7 +24,7 @@ export const bookSlice = createSlice({
         state.count = action.payload;
     },
     setTotal: (state, action) => {
-        state.total = action.payload.price;
+        state.total = action.payload.sumPrice;
     },
     setTourID: (state, action) => {
       state.tourID = action.payload;

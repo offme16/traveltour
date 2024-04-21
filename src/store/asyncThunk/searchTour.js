@@ -1,16 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { countriesActions } from "../countrySlice";
+import { API_URL } from "../http/api";
 
 export const searchTour = createAsyncThunk(
   "post_searchTour",
   async (bookData, thunkAPI) => {
     try {
-      const response = await axios.post("https://localhost:7045/user/book", {
+      const response = await axios.post(`${API_URL}FindTour`, {
         country: bookData.country,
-        dateOfDispatch: bookData.dateOfDispatch,
-        dateOfArrival: bookData.dateOfArrival,
-        count: bookData.count,
+        departureDate: bookData.dateOfDispatch,
+        arrivalDate: bookData.dateOfArrival,
+        passengers: bookData.count,
       });
 
       if (!response.data) {
