@@ -1,5 +1,6 @@
 import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
 import { postBookForm } from "./asyncThunk/postBook";
+import { ID_TOUR } from "./const/actionTypes";
 
 const initialState = {
   isLoading: false,
@@ -28,6 +29,7 @@ export const bookSlice = createSlice({
     },
     setTourID: (state, action) => {
       state.tourID = action.payload;
+      localStorage.setItem(ID_TOUR, action.payload);
   }
   },
     extraReducers: (builder) => {

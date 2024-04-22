@@ -54,7 +54,7 @@ const BookForm = ({ tour }) => {
             <div className={style.row}>
                 <form onSubmit={(e) => e.preventDefault()}>
                 <Input type="text" value={name} readOnly onChange={(e) => handleField(e.target.value, "name")}> Вы выбрали </Input>
-                <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handlePrice(e.target.value)} > Количество пассажиров </Input>
+                <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handlePrice(e.target.value)}> Количество пассажиров </Input>
                     <div className={style.total}>
                         <strong>Сумма:</strong>
                         <strong>{sum}₽</strong>

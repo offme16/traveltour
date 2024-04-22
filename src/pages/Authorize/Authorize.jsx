@@ -28,7 +28,6 @@ const Auth = () => {
     async () => {
       try {
         const result = await dispatch(loginUser(authData));
-
         if (result.meta.requestStatus === "rejected") {
           alert("Произошла ошибка: " + result.payload);
 

@@ -21,6 +21,9 @@
 em{
     color: red;
 }
+.error {
+  text-align: center;
+}
 .title {
     font-size: 28px;
     color: #000000;

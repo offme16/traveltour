@@ -1,7 +1,8 @@
 import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
 import { USER_LOCALSTORAGE_KEY } from "./const/actionTypes";
 const initialState = {
-  userID: null,
+  userID: undefined,
+  isAuth: false,
 };
 export const userSlice = createSlice({
   name: "user",
@@ -9,16 +10,11 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.userID = action.payload;
-    },
-    initAuthData: (state, action) => {
-      const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-      if (user) {
-        state.userID = JSON.parse(user);
-      }
+      state.isAuth = true;
     },
     logout: (state) => {
       state.userID = undefined;
-      localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+      state.isAuth = false;
     },
   },
 });

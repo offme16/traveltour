@@ -24,7 +24,6 @@ export const loginUser = createAsyncThunk(
         USER_LOCALSTORAGE_REFRESH,
         JSON.stringify(response.data.refresh)
       );
-      console.log(response.data.currentUser);
       thunkAPI.dispatch(userActions.setUser(response.data.currentUser));
       return response.data;
     } catch (error) {

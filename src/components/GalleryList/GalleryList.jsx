@@ -16,10 +16,8 @@ export const GalleryList = (props) => {
         <h3>{e.name}</h3>
         <NavLink to={`/tour/${e.id}`}><Button onClick={() => dispatch(bookActions.setTourID(e.id))}>Подробнее</Button></NavLink>
     </div>
-</div>
-)}
-</div> : <div className={style.box_container__error}>Ничего не найдено:(</div>}
-       
-        </>
-        
+    </div>)}
+    </div>
+    : <div className={style.box_container__error}>Ничего не найдено:(</div>}       
+</>  
 )};

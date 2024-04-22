@@ -9,6 +9,9 @@ import ScrollToTop from "../../assets/lib/scrollTop";
 import { getHostel } from "../../store/asyncThunk/getHostel";
 import { getTour } from "../../store/asyncThunk/getTour";
 import { ID_HOTEL, ID_TOUR } from "../../store/const/actionTypes";
+import HotelInfo from "../../components/HoyelInfo/HotelInfo";
+import { Loader } from "../../components/Loader/Loader";
+import { bookActions } from "../../store/bookSlice";
 
 const Tour = () => {
   ScrollToTop();
@@ -16,45 +19,52 @@ const Tour = () => {
   const [visible, setVisible] = useState(false);
   const { id } = useParams();
 
-  localStorage.setItem(ID_TOUR, id);
-
+  useEffect(() => {
+    const fetchTour = async () => {
+      try {
+        await dispatch(getTour());
+      } catch (error) {
+        console.error("Error fetching tour:", error);
+      }
+    };
+  
+    fetchTour();
+  }, [dispatch]);
   
   const country = useSelector((state) =>
     state.countriesData.countries.find((country) => country.id === Number(id))
   );
-  localStorage.setItem(ID_HOTEL, country.hotelId);
 
 
-  useEffect(() => {
-    if (country.hotelId){
-      dispatch(getHostel(country.hotelId));
-    } else {
-      const hostelId = JSON.parse(localStorage.getItem(ID_HOTEL));
-      dispatch(getHostel(hostelId));
-    }
- },[dispatch]);
-
-  if (!country) {
-    return <div>Тур не найден</div>;
+  const getInf = (id) => {
+    setVisible(true)
+    dispatch(bookActions.setTourID(id))
   }
 
   return (
     <div className={style.container}>
-        <div className={style.tourViewer}>
-      <img src={country.images} alt="Tour" className={style.tourPhoto} />
-      <div className={style.tourInfo}>
-        <div className={style.tourPrice}>{country.name}</div>
-        <div className={style.tourPrice}>Цена: {country.price}₽</div>
-        <div className={style.tourDescription}>{country.description}</div>
-        <Button  onClick = {() => setVisible(true)}>Забронировать</Button>
-      </div>
-      
+      <>
+        {country ? (
+          <div className={style.tourViewer}>
+            <img src={country.images} alt="Tour" className={style.tourPhoto} />
+            <div className={style.tourInfo}>
+              <div className={style.tourPrice}>{country.name}</div>
+              <div className={style.tourPrice}>Цена: {country.price}₽</div>
+              <div className={style.tourDescription}>{country.description}</div>
+              <Button onClick={() => getInf(country.id)}>Забронировать</Button>
+            </div>
+          </div>
+        ) : (
+          <Loader />
+        )}
+        {visible && (
+          <MyModal visible={visible} setVisible={setVisible}>
+            <BookForm tour={country} />
+          </MyModal>
+        )}
+        {country && <HotelInfo country={country} />}
+      </>
     </div>
-        <MyModal visible={visible} setVisible={setVisible} >
-            <BookForm tour={country}/>
-        </MyModal>
-    </div>
-    
   );
 };
 
