@@ -1,13 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userActions } from "../userSlice";
 import { USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH } from "../const/actionTypes";
-import api from "../http/api";
+import { API_URL } from "../http/api";
+import axios from "axios";
 
 export const loginUser = createAsyncThunk(
   "login/User",
   async (authData, thunkAPI) => {
     try {
-      const response = await api.post("api/Auth/Login", {
+      const response = await axios.post(`${API_URL}api/Auth/Login`, {
         userName: authData.username,
         password: authData.password,
       });
@@ -27,7 +28,8 @@ export const loginUser = createAsyncThunk(
       thunkAPI.dispatch(userActions.setUser(response.data.currentUser));
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      console.log(error)
+      return thunkAPI.rejectWithValue("Неправильный пароль или логин");
     }
   }
 );

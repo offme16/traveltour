@@ -7,6 +7,7 @@ import Registration from "./pages/Registration/Registration";
 import Authorize from "./pages/Authorize/Authorize";
 import Tour from "./pages/Tour/Tour";
 import Search from "./pages/Search/Search";
+import { Toaster } from 'react-hot-toast'; // Update import
 function App() {
 
   
@@ -14,6 +15,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
+        <Toaster />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/registration" element={<Registration />} />

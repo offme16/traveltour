@@ -23,7 +23,6 @@ export const Header = () => {
             <NavLink to={'/'} href="#home">Главная</NavLink>
             <NavLink to={'/search'} href="#packages">Туры</NavLink>
             <a href="#gallery">Галерея</a>
-            <a href="#review">Отзывы</a>
             </nav>
             <>
             {!isAuth ? <NavLink to={'/registration'}><img className={style.img} src={avatar} alt="profile"/></NavLink> : <NavLink onClick={out}><img className={style.img} src={log_out} alt="logout"/></NavLink>}

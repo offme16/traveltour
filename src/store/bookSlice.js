@@ -10,7 +10,7 @@ const initialState = {
   name: "",
   dateOfDispatch: "",
   dateOfArrival: "",
-  count: 1,
+  count: 0,
   total: 0,
   result: '',
 };

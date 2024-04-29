@@ -7,11 +7,14 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { loginUser } from "../../store/asyncThunk/loginUser";
 import { authActions } from "../../store/authenticationSlice";
 import { Loader } from "../../components/Loader/Loader";
+import { toast } from 'react-hot-toast';
 
 const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const authData = useSelector((state) => state.authentication);
+  const error = useSelector((state) => state.authentication.error);
+  
   const handleField = useCallback((value, fieldName) => {
     dispatch(authActions.setField({ value, fieldName }));
   }, [dispatch]);
@@ -29,7 +32,7 @@ const Auth = () => {
       try {
         const result = await dispatch(loginUser(authData));
         if (result.meta.requestStatus === "rejected") {
-          alert("Произошла ошибка: " + result.payload);
+          toast.error(error);
 
         } else {
           navigate("/");

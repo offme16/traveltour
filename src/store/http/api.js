@@ -1,35 +1,46 @@
-import axios from "axios"
-import { USER_LOCALSTORAGE_KEY } from "../const/actionTypes"
+import axios from "axios";
+import { USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH } from "../const/actionTypes";
 
-export const API_URL = 'http://localhost:5092/'
+export const API_URL = 'http://localhost:5092/';
 
 const api = axios.create({
     baseURL: API_URL,
-})
+});
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
     const accessToken = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-    const cleanedToken = accessToken.replace(/['"]+/g, ''); 
-    config.headers.Authorization = `Bearer ${cleanedToken}`
+    if (accessToken) {
+        const cleanedToken = accessToken.replace(/['"]+/g, ''); 
+        config.headers.Authorization = `Bearer ${cleanedToken}`;
+    }
     return config;
 });
 
-api.interceptors.response.use((config) => {
-    return config;
-}, async (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && error.config && !error.config._isRetry) {
-        originalRequest._isRetry = true;
-        try {
-            const response = await axios.get(`${API_URL}api/Auth/RefreshToken`);
-            localStorage.setItem(USER_LOCALSTORAGE_KEY, response.data.accesToken);
-            return api.request(originalRequest);
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
+        if (error.response && error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            const refreshToken = localStorage.getItem(USER_LOCALSTORAGE_REFRESH);
+            if (refreshToken) {
+                try {
+                    const response = await api.post(`${API_URL}api/Auth/RefreshToken`, {
+                        jwtToken: JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY)),
+                        refreshToken: JSON.parse(refreshToken)
+                    });
+                    localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data.accessToken));
+                    localStorage.setItem(USER_LOCALSTORAGE_REFRESH, JSON.stringify(response.data.refreshToken));
+                    return api(originalRequest);
+                } catch (refreshError) {
+                    console.log("Error refreshing token:", refreshError);
+                }
+            } else {
+                alert("Refresh token not found. Logging out.");
+            }
         }
-        catch (e) {
-            console.log("NOT AUTH");
-        }
+        return Promise.reject(error);
     }
-    throw error;
-})
+);
 
 export default api;

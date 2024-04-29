@@ -16,6 +16,7 @@
      flex-wrap: wrap;
      gap:1.5rem;
      align-items: center;
+     margin-bottom: 10px;
 }
       
 .row form{
@@ -49,3 +50,9 @@
     font-size: 16px;
     padding: 5px;
   } 
+
+  .book_close__btn {
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }

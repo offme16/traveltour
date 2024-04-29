@@ -11,16 +11,12 @@ export const postBookForm = createAsyncThunk(
         tourId: Number(bookData.tourID),
         persons: Number(bookData.count.value)
       });
-
       console.log("Response received:", response.data);
-      
       if (!response.data) {
         throw new Error();
       }
-      alert(response.data)
       return response.data;
     } catch (error) {
-      console.error("Request failed with error:", error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
