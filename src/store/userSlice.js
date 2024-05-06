@@ -1,7 +1,7 @@
 import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
 import { USER_LOCALSTORAGE_KEY } from "./const/actionTypes";
 const initialState = {
-  userID: undefined,
+  userID: null,
   isAuth: false,
 };
 export const userSlice = createSlice({
@@ -13,7 +13,7 @@ export const userSlice = createSlice({
       state.isAuth = true;
     },
     logout: (state) => {
-      state.userID = undefined;
+      state.userID = null;
       state.isAuth = false;
     },
   },

@@ -10,7 +10,7 @@ const api = axios.create({
 api.interceptors.request.use(async (config) => {
     const accessToken = localStorage.getItem(USER_LOCALSTORAGE_KEY);
     if (accessToken) {
-        const cleanedToken = accessToken.replace(/['"]+/g, ''); 
+        const cleanedToken = accessToken.replace(/['"]+/g, '');
         config.headers.Authorization = `Bearer ${cleanedToken}`;
     }
     return config;
@@ -20,12 +20,12 @@ api.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
-        if (error.response && error.response.status === 401 && !originalRequest._retry) {
+        if (error.response && error.response.status === 401 && !originalRequest._retry && originalRequest.url !== `${API_URL}api/User/RefreshToken`) {
             originalRequest._retry = true;
             const refreshToken = localStorage.getItem(USER_LOCALSTORAGE_REFRESH);
             if (refreshToken) {
                 try {
-                    const response = await api.post(`${API_URL}api/Auth/RefreshToken`, {
+                    const response = await api.post(`${API_URL}api/User/RefreshToken`, {
                         jwtToken: JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY)),
                         refreshToken: JSON.parse(refreshToken)
                     });

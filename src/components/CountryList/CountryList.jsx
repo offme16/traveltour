@@ -42,8 +42,8 @@ export const CountryList = (props) => {
           </div>
         )) : <div className={style.box_container__error}>Ничего не найдено:(</div>}
       </div>
-      <MyModal visible={visible} setVisible={setVisible} onClose={handleCloseModal}>
-        <BookForm tour={tour} onClose={handleCloseModal} />
+      <MyModal visible={visible} setVisible={setVisible}>
+        <BookForm tour={tour}/>
       </MyModal>
     </>
   );

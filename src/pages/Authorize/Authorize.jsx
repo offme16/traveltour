@@ -40,10 +40,9 @@ const Auth = () => {
 
       } catch (error) {
         console.error("Произошла ошибка:", error);
-        alert("Произошла ошибка при входе!");
       }
     },
-    [dispatch, navigate, authData]
+    [dispatch, navigate, authData, error]
   );
 
   return (

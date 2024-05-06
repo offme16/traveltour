@@ -2,13 +2,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userActions } from "../userSlice";
 import { USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH } from "../const/actionTypes";
 import axios from "axios";
-import { API_URL } from "../http/api";
+import api, { API_URL } from "../http/api";
 
 export const AuthUser = createAsyncThunk(
   "auth/User",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.post(`${API_URL}api/Auth/RefreshToken`, {
+      const response = await axios.post(`http://localhost:5092/api/User/RefreshToken`, {
         jwtToken: JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY)),
         refreshToken: JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_REFRESH))
       });

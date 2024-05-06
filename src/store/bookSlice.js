@@ -30,7 +30,12 @@ export const bookSlice = createSlice({
     setTourID: (state, action) => {
       state.tourID = action.payload;
       localStorage.setItem(ID_TOUR, action.payload);
-  }
+  },
+    clearState: (state) => {
+      state.tourID = "";
+      state.count = 0;
+      state.total = 0;
+    }
   },
     extraReducers: (builder) => {
       builder

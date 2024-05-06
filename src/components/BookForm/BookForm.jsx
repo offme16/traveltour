@@ -8,11 +8,10 @@ import StringSplitter from "../StringSpliter/StringSpliter";
 import style from "./BookForm.module.css";
 import { toast } from 'react-hot-toast';
 
-const BookForm = ({ tour, onClose }) => {
+const BookForm = ({ tour }) => {
   const dispatch = useDispatch();
   const sum = useSelector((state) => state.book.total);
   const bookData = useSelector((state) => state.book);
-
 
   const handleField = useCallback((value, fieldName) => {
     dispatch(bookActions.setField({ value, fieldName }));
@@ -49,7 +48,6 @@ const BookForm = ({ tour, onClose }) => {
 
   return (
     <section className={style.book}>
-      <div className={style.book_close__btn} onClick={onClose}>X</div>
       <h1 className={style.heading}>
         <StringSplitter text={"ЗАБРОНИРУЙ"} />
       </h1>
