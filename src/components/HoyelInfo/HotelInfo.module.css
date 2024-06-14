@@ -1,32 +1,60 @@
-.hotelInfo {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .hotelInfo h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .hotelInfo p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .hotelInfo p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .hotelInfo p span {
-    font-weight: bold;
-  }
-  
-  /* Пример стилей для изображений отеля */
-  .hotelInfo img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
+.hotelInfoContainer {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hotelCard {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  text-align: left;
+}
+
+.hotelDetails {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotelName {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.hotelDetails p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.hotelDetails p span {
+  font-weight: bold;
+}
+
+.hotelImages {
+  width: 100%;
+}
+
+.imageContainer {
+  padding: 10px;
+}
+
+.hotelImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slick-dots {
+  bottom: -30px;
+}

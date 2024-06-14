@@ -7,6 +7,7 @@ import { Input } from "../UI/MyInput/Input";
 import StringSplitter from "../StringSpliter/StringSpliter";
 import style from "./BookForm.module.css";
 import { toast } from 'react-hot-toast';
+import Select from "../UI/MySelect/Select";
 
 const BookForm = ({ tour }) => {
   const dispatch = useDispatch();
@@ -20,8 +21,7 @@ const BookForm = ({ tour }) => {
   if (!tour) {
     return null;
   }
-
-  const { name, price, discount } = tour;
+  const { name, price, discount, hotel } = tour.tour;
 
   function currentSumm(value) {
     return discount > 0 ? value * price - (discount * price) / 100 : value * price;
@@ -45,7 +45,7 @@ const BookForm = ({ tour }) => {
       toast.error("Произошла ошибка на сервере, повторите попытку позже");
     }
   };
-
+  const hotelOptions = hotel ? hotel.map(e => ({ value: e.id, label: e.name })) : [];
   return (
     <section className={style.book}>
       <h1 className={style.heading}>
@@ -56,6 +56,9 @@ const BookForm = ({ tour }) => {
           <Input type="text" value={name} readOnly onChange={(e) => handleField(e.target.value, "name")}>
             Вы выбрали
           </Input>
+          <Select options={hotelOptions} onChange={(e) => handleField(e.target.value, "hotelID")}>
+            Выберите отель
+          </Select>
           <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handlePrice(e.target.value)}>
             Количество пассажиров
           </Input>

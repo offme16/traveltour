@@ -9,7 +9,8 @@ export const loginUser = createAsyncThunk(
   async (authData, thunkAPI) => {
     try {
       const response = await axios.post(`${API_URL}api/User/Login`, {
-        userName: authData.username,
+        userName: "",
+        userEmail: authData.email,
         password: authData.password,
       });
 
@@ -32,7 +33,6 @@ export const loginUser = createAsyncThunk(
       thunkAPI.dispatch(userActions.setUser(response.data.currentUser));
       return response.data;
     } catch (error) {
-      console.log(error)
       return thunkAPI.rejectWithValue("Неправильный пароль или логин");
     }
   }

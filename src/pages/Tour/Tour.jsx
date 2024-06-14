@@ -30,9 +30,8 @@ const Tour = () => {
   }, [dispatch]);
   
   const country = useSelector((state) =>
-    state.countriesData.countries.find((country) => country.id === Number(id))
+    state.countriesData.countries.find((country) => country.tour.id === Number(id))
   );
-
 
   const getInf = (id) => {
     setVisible(true)
@@ -44,12 +43,12 @@ const Tour = () => {
       <>
         {country ? (
           <div className={style.tourViewer}>
-            <img src={country.images} alt="Tour" className={style.tourPhoto} />
+            <img src={country.tour.images.url} alt="Tour" className={style.tourPhoto} />
             <div className={style.tourInfo}>
-              <div className={style.tourPrice}>{country.name}</div>
-              <div className={style.tourPrice}>Цена: {country.price}₽</div>
-              <div className={style.tourDescription}>{country.description}</div>
-              <Button onClick={() => getInf(country.id)}>Забронировать</Button>
+              <div className={style.tourPrice}>{country.tour.name}</div>
+              <div className={style.tourPrice}>Цена: {country.tour.price}₽</div>
+              <div className={style.tourDescription}>{country.tour.description}</div>
+              <Button onClick={() => getInf(country.tour.id)}>Забронировать</Button>
             </div>
           </div>
         ) : (

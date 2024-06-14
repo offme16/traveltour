@@ -12,6 +12,8 @@ export const searchTour = createAsyncThunk(
         departureDate: bookData.dateOfDispatch,
         arrivalDate: bookData.dateOfArrival,
         passengers: bookData.count,
+        priceMin: bookData.priceMin,
+        priceMax: bookData.priceMax
       });
 
       if (!response.data) {

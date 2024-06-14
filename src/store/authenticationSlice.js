@@ -4,8 +4,8 @@ import { loginUser } from "./asyncThunk/loginUser";
 const initialState = {
   isLoading: false,
   error: "",
-  username: "",
   password: "",
+  email: ""
 };
 export const authenticationSlice = createSlice({
   name: "Authentication",

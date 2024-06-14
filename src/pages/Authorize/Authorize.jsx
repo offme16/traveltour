@@ -55,11 +55,11 @@ const Auth = () => {
       >
         <p className={style.title}>Войти</p>
         <input
-          {...register("userName", { required: true })}
-          placeholder="Имя пользователя"
+          {...register("email", { required: true })}
+          placeholder="e-mail"
           type="text"
           className={style.input}
-          onChange={(e) => handleField(e.target.value, "username")}
+          onChange={(e) => handleField(e.target.value, "email")}
         />
         <input
           {...register("password", {

@@ -10,7 +10,8 @@ export const postBookForm = createAsyncThunk(
       const response = await api.patch(`${API_URL}BookTour`, {
         tourId: Number(bookData.tourID),
         persons: Number(bookData.count.value),
-        userId: userID
+        userId: userID,
+        hotelId: Number(bookData.hotelID)
       });
       console.log("Response received:", response.data);
       if (!response.data) {

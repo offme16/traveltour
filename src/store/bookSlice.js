@@ -13,6 +13,9 @@ const initialState = {
   count: 0,
   total: 0,
   result: '',
+  priceMin: 0,
+  priceMax: 0,
+  hotelID: 0,
 };
 export const bookSlice = createSlice({
   name: "bookForm",

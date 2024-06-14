@@ -8,14 +8,13 @@ export const logoutUser = createAsyncThunk(
   async (thunkAPI) => {
     try {
       const userID = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_ID))
-      const response = await api.post(`${API_URL}logout`, {
+      const response = await api.post(`${API_URL}api/User/Logout`, {
         userID
       });
       if (!response.data) {
         throw new Error();
       }
       localStorage.removeItem(USER_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_REFRESH, USER_LOCALSTORAGE_ID);
-      thunkAPI.dispatch(userActions.logout());
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }

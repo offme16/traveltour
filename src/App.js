@@ -7,7 +7,7 @@ import Registration from "./pages/Registration/Registration";
 import Authorize from "./pages/Authorize/Authorize";
 import Tour from "./pages/Tour/Tour";
 import Search from "./pages/Search/Search";
-import { Toaster } from 'react-hot-toast'; // Update import
+import { Toaster } from 'react-hot-toast';
 function App() {
 
   

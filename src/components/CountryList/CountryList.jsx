@@ -9,7 +9,7 @@ import { bookActions } from "../../store/bookSlice";
 export const CountryList = (props) => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
-  const [tour, setTour] = useState();
+  const [tour, setTour] = useState(); 
   const arr = props.country.filter(e => e.discount > '0');
   
   const tooggle = (e) => {
@@ -18,12 +18,6 @@ export const CountryList = (props) => {
     dispatch(bookActions.setTourID(e));
     setTour(city);
   }
-
-  const handleCloseModal = () => {
-    setVisible(false);
-    dispatch(bookActions.setCount(0));
-    dispatch(bookActions.setTotal(0));
-  };
 
   return (
     <>

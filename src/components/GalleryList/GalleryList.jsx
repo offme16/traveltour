@@ -5,16 +5,15 @@ import { useDispatch } from "react-redux";
 import { bookActions } from "../../store/bookSlice";
 export const GalleryList = (props) => {
     const dispatch = useDispatch();
-    
     return (
         <> 
         {props.country.length ?  <div className={style.box_container}>
         {props.country.map((e) => 
         <div className={style.box} key={e.id}>
-        <img src={e.images} alt="img" />
+        <img src={e.tour.images.url} alt="img" />
     <div className={style.content}>
-        <h3>{e.name}</h3>
-        <NavLink to={`/tour/${e.id}`}><Button onClick={() => dispatch(bookActions.setTourID(e.id))}>Подробнее</Button></NavLink>
+        <h3>{e.tour.name}</h3>
+        <NavLink to={`/tour/${e.tour.id}`}><Button onClick={() => dispatch(bookActions.setTourID(e.tour.id))}>Подробнее</Button></NavLink>
     </div>
     </div>)}
     </div>
