@@ -49,6 +49,7 @@ const HotelInfo = ({ country }) => {
                   <p><span>Подходит для детей:</span> {e.allowChild ? "Да" : "Нет"}</p>
                   <p><span>Бесплатный Wi-Fi:</span> {e.freeWifi ? "Да" : "Нет"}</p>
                   <p><span>Тип питания:</span> {e.typeOfNutrition}</p>
+                  <p><span>Цена проживания:</span>{e.price}</p>
                 </div>
                 <div className={style.hotelImages}>
                   <Slider {...settingsForImg}>

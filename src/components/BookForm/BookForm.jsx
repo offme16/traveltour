@@ -24,7 +24,7 @@ const BookForm = ({ tour }) => {
   const { name, price, discount, hotel } = tour.tour;
 
   function currentSumm(value) {
-    return discount > 0 ? value * price - (discount * price) / 100 : value * price;
+    return value * price;
   }
 
   const handlePrice = (value) => {

@@ -4,6 +4,7 @@ import { Button } from "../UI/MyButton/Button"
 import { useDispatch } from "react-redux";
 import { bookActions } from "../../store/bookSlice";
 export const GalleryList = (props) => {
+    console.log(props);
     const dispatch = useDispatch();
     return (
         <> 

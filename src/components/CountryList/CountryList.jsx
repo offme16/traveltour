@@ -10,11 +10,12 @@ export const CountryList = (props) => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [tour, setTour] = useState(); 
-  const arr = props.country.filter(e => e.discount > '0');
-  
+  const arr = props.country.filter(e => e.tour.discount > 0);
+  console.log(arr);
   const tooggle = (e) => {
     setVisible(true);
-    const city = props.country.find(item => item.id === e);
+
+    const city = props.country.find(item => item.tour.id === e);
     dispatch(bookActions.setTourID(e));
     setTour(city);
   }
@@ -23,14 +24,14 @@ export const CountryList = (props) => {
     <>
       <div className={style.box_container}>
         {arr.length ? arr.map((e) => (
-          <div className={style.box} key={e.id}>
-            <img src={e.images} alt="img" />
+          <div className={style.box} key={e.tour.id}>
+            <img src={e.tour.images.url} alt="img" />
             <div className={style.content}>
-              <h3><i className="fas fa-map-marker-alt"></i> {e.name}</h3>
+              <h3><i className="fas fa-map-marker-alt"></i> {e.tour.name}</h3>
               <p>{e.description}</p>
               <div className={style.button_container}>
-                <div className={style.price}>{e.price - ((e.discount*e.price)/100)} ₽<span>{e.price}₽</span> </div>
-                <Button onClick={() => tooggle(e.id)}>Забронировать</Button>
+                <div className={style.price}>Цена:{e.tour.price}₽ <span>Скидка:{e.tour.discount}%</span> </div>
+                <Button onClick={() => tooggle(e.tour.id)}>Забронировать</Button>
               </div>
             </div>
           </div>

@@ -47,7 +47,10 @@
 .imageContainer {
   padding: 10px;
 }
-
+.imageContainer img{
+  width: 330px;
+  height: 220px;
+}
 .hotelImage {
   max-width: 100%;
   height: auto;
