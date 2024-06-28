@@ -44,8 +44,8 @@ const Search = () => {
         <Input type="number" placeholder="Введите количество пассажиров" onChange={(e) => handleField(e.target.value, "count")}>Количество пассажиров</Input>
         <Input type="date" onChange={(e) => handleField(e.target.value, "dateOfDispatch")} required>Прибытие</Input>
         <Input type="date" onChange={(e) => handleField(e.target.value, "dateOfArrival")} required>Отъезд</Input>
-        <Input type="number" placeholder="цена" onChange={(e) => handleField(e.target.value, "priceMin")} required>Минимальная</Input>
-        <Input type="number" placeholder="цена" onChange={(e) => handleField(e.target.value, "priceMax")} required>Максимальная</Input>
+        <Input type="number" placeholder="цена" onChange={(e) => handleField(e.target.value, "priceMin")} >Минимальная</Input>
+        <Input type="number" placeholder="цена" onChange={(e) => handleField(e.target.value, "priceMax")} >Максимальная</Input>
         <Button className={style.btn_sf} onClick={onSubmit}>Поиск</Button>
         </form>
         <GalleryList country={country}/>
